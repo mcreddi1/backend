@@ -26,5 +26,13 @@ pipeline{
                 sh 'npm install'
             }
         }
+        stage(Docker Build){
+            steps{
+                sh """
+                docker build -t daws/backend:${appVersion} .
+                docker images -a
+                """
+            }
+        }
     }
 }
